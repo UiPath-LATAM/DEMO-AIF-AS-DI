@@ -1,0 +1,82 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AnaliseSentimento" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1867,1073" sap2010:WorkflowViewState.IdRef="AnaliseSentimento_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.MLServices;assembly=UiPath.MLServices" xmlns:uma="clr-namespace:UiPath.MLServices.Activities;assembly=UiPath.MLServices.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="44">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>UiPath.MLServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.MLServices</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="AnaliseSentimento" sap:VirtualizedContainerService.HintSize="392,908" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="in_Sentiment" />
+      <Variable x:TypeArguments="x:String" Name="out_Sentiment" />
+      <Variable x:TypeArguments="njl:JObject" Name="ret_Sentiment" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InputDialog Options="{x:Null}" DisplayName="Insere texto" sap:VirtualizedContainerService.HintSize="350,92" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Entre com um textoem inglês para análise de sentimento" Title="Análise de Sentimento">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[in_Sentiment]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <uma:MLSkills ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID0}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" DisplayName="MLSkill" sap:VirtualizedContainerService.HintSize="350,352" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[in_Sentiment]" JsonResponse="[out_Sentiment]" NextPageNum="2" RefreshList="False" TotalCount="3">
+      <uma:MLSkills.MLSkillList>
+        <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
+          <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://aifabric.uipath.com/mlskills/host/48db1b7d-b530-4d8c-877b-6dc50027356a/analisesentimento" Description="Modelo analisa o sentimento baseado em um texto" Id="0e076ac0-118c-4f25-bf1d-5bfb1a32d4c1" InputDescription="Text to be analyzed.&#xA;For example: &quot;I am dissatisfied with this service.&quot;" InputType="JSON" Name="AnaliseSentimento" OutputDescription="JSON with class name and confidence on that class prediction (between 0-1) Class prediction can be one of: &quot;Very Negative&quot;, &quot;Negative&quot;, &quot;Neutral&quot;, &quot;Positive&quot;, &quot;Very Positive&quot;&#xA;For example:  '{&quot;sentiment&quot;: &quot;Very Negative&quot;, &quot;confidence&quot;: 0.97}'" TenantId="48db1b7d-b530-4d8c-877b-6dc50027356a" />
+          <um:MLSkill AccessUri="https://aifabric.uipath.com/mlskills/host/48db1b7d-b530-4d8c-877b-6dc50027356a/deteccaoidioma" Description="Detecta um idioma baseado em um texto" Id="32773afb-b31d-4c75-a907-25f866c860bb" InputDescription="Text to be analyzed.&#xA;For example:&#xA;&quot;Necesito ayuda con mi pedido.&quot;" InputType="JSON" Name="DeteccaoIdioma" OutputDescription="JSON with prediction of the language.&#xA;Output will be a prediction for the input's language along with a confidence of that prediction.&#xA;{&#xA;    &quot;language&quot;:&quot;Spanish&quot;, &#xA;    &quot;confidence&quot;: 1.0&#xA;}" TenantId="48db1b7d-b530-4d8c-877b-6dc50027356a" />
+          <um:MLSkill AccessUri="https://aifabric.uipath.com/mlskills/host/48db1b7d-b530-4d8c-877b-6dc50027356a/inventorymanagement" Description="The model will predict sales for the next time period." Id="d6d39230-98c7-479c-9e0f-187eb20a4093" InputDescription="List of past 12 periods of sales. Example: “[1,2,3,4,5,6,7,8,9,10,11,12]”" InputType="JSON" Name="InventoryManagement" OutputDescription="{}{“prediction”: &lt;Predicted Sales&gt;}&#xA;" TenantId="48db1b7d-b530-4d8c-877b-6dc50027356a" />
+        </scg:List>
+      </uma:MLSkills.MLSkillList>
+    </uma:MLSkills>
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="350,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[ret_Sentiment]" JsonString="[out_Sentiment]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="350,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[out_Sentiment]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="350,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Sentimento: &quot; + ret_Sentiment(&quot;sentiment&quot;).ToString +&#xA;vbCrLf + &#xA;&quot;Assertividade: &quot; + &#xA;(CDbl(ret_Sentiment(&quot;confidence&quot;))*100).ToString +&#xA;&quot; %&quot;]" />
+  </Sequence>
+</Activity>
