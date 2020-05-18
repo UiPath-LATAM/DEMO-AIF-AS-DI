@@ -3,8 +3,6 @@
   "description": "Demo de AiFabric on UiPath Cloud Platform(SaaS)",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.8.5]",
-    "UiPath.Mail.Activities": "[1.8.5]",
     "UiPath.MLServices.Activities": "[1.0.1]",
     "UiPath.System.Activities": "[20.4.0]",
     "UiPath.UIAutomation.Activities": "[20.4.1]",
