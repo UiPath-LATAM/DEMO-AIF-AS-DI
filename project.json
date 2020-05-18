@@ -1,6 +1,6 @@
 {
   "name": "Demo_AIF-AS-DI",
-  "description": "Demo de AiFabric no UiPath Automation Cloud (SaaS) dos modelos de Analise de Sentimentos e Detecção de Idiomas",
+  "description": "Demonstração do UiPath AiFabric no UiPath Automation Cloud (SaaS) dos modelos de ML Analise de Sentimentos e Detecção de Idiomas",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.MLServices.Activities": "[1.0.1]",
